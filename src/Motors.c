@@ -2,7 +2,7 @@
 
 
 
-void MOTOR_ASPIRATOR(bit F){
+void MOTOR_Aspirator(unsigned short F){
   if (F){
     PORTD.RD6 = 1;
   }else{
@@ -11,7 +11,7 @@ void MOTOR_ASPIRATOR(bit F){
 }
 
 
-void MOTOR_BLADES(bit F){
+void MOTOR_Blades(unsigned short F){
   if (F){
     PORTD.RD7 = 1;
   }else{
@@ -20,7 +20,7 @@ void MOTOR_BLADES(bit F){
 }
 
 
-void MOTORS_Back();
+void MOTORS_Back()
 {
   PORTD.RC1 = 0;
   PORTD.RC2 = 0;

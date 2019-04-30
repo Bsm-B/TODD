@@ -1,7 +1,6 @@
 #include "Sensor.h"
 
-
-
+unsigned short INT_NUM = 0;
 
 void SENSOR_Init()
 {
@@ -10,7 +9,6 @@ void SENSOR_Init()
   OPTION_REG.INTEDG = 1;  // Falling Edge
 
   ADCON1 = 0x02;   //ONLY A0;A1,A2 As Analog
-
 }
 
  void interrupt (void) {

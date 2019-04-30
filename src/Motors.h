@@ -5,8 +5,8 @@ void MOTORS_Init();
 void MOTORS_Left();
 void MOTORS_Right();
 void MOTORS_Back();
-void MOTOR_ASPIRATOR(bit);
-void MOTOR_BLADES(bit);
+void MOTOR_Aspirator(unsigned short);
+void MOTOR_Blades(unsigned short);
 
 
 

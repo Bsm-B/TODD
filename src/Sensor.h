@@ -3,6 +3,8 @@
 
 
 void SENSOR_Init();
-void SENSOR_Read(unsigned short * IR_val);
+float SENSOR_R1();
+float SENSOR_R2();
+float SENSOR_R3();
 
 #endif

@@ -5,22 +5,39 @@
 
 
 void SENSOR_Init();
-void SENSOR_Read(unsigned short * IR_val);
+float SENSOR_R1();
+float SENSOR_R2();
+float SENSOR_R3();
 #line 3 "C:/Users/Bsm/Desktop/TODD/src/Sensor.c"
 unsigned short INT_NUM = 0;
 
 void SENSOR_Init()
 {
- TRISB = 0xFF;
- INTCON = 0b10001000;
+ INTCON = 0b10011000;
  OPTION_REG.INTEDG = 1;
-
  ADCON1 = 0x02;
+ ADC_Init();
 }
 
+float SENSOR_R1(){
+ return ADC_Read(0);
+}
+float SENSOR_R2(){
+ return ADC_Read(1);
+}
+float SENSOR_R3(){
+ return ADC_Read(2);
+}
  void interrupt (void) {
 
+ if(INTCON.INTF){
+
+ INT_NUM = 5;
+ INTCON.INTF = 0;
+ }
+
  if (INTCON.RBIF){
+
  if (PORTB.RB4){
  INT_NUM = 1;
  }
@@ -33,15 +50,9 @@ void SENSOR_Init()
  if (PORTB.RB7){
  INT_NUM = 4;
  }
- }
-
  INTCON.RBIF = 0;
-
  }
 
- void SENSOR_Read(unsigned short * IR_val)
- {
- IR_val[0] = ADC_READ(0);
- IR_val[1] = ADC_READ(1);
- IR_val[2] = ADC_READ(2);
+
+
  }

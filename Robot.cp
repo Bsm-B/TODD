@@ -5,29 +5,36 @@
 
 
 
-unsigned short CONFIG_Read();
-void CONFIG_Write(unsigned short);
+
+unsigned short SPEED_Read();
+unsigned short DIRECTION_Read();
 #line 1 "c:/users/bsm/desktop/todd/src/sensor.h"
 
 
 
 
 void SENSOR_Init();
-void SENSOR_Read(unsigned short * IR_val);
+float SENSOR_R1();
+float SENSOR_R2();
+float SENSOR_R3();
 #line 1 "c:/users/bsm/desktop/todd/src/motors.h"
 
 
 
 void MOTORS_Init();
-void MOTORS_Left();
-void MOTORS_Right();
+void MOTORS_Left(unsigned short);
+void MOTORS_Right(unsigned short);
 void MOTORS_Back();
+void MOTORS_Mill_Around();
+void MOTORS_Stop();
+void MOTROS_Start(unsigned short);
 void MOTOR_Aspirator(unsigned short);
 void MOTOR_Blades(unsigned short);
 #line 1 "c:/users/bsm/desktop/todd/src/lcd.h"
 
 
 
+ sbit LED at PORTC.B0;
 
  sbit LCD_EN at RD0_bit;
  sbit LCD_RS at RD1_bit;
@@ -47,18 +54,126 @@ void MOTOR_Blades(unsigned short);
 
  void LCD_Init_P();
 #line 6 "C:/Users/Bsm/Desktop/TODD/Robot.c"
-unsigned short x = 0;
+float IR1,IR2,IR3;
+unsigned short Speed = 0;
+unsigned short Direction = 0;
+unsigned short Sd = 0;
+unsigned short Dn = 0;
+unsigned short Etat = 0;
+unsigned char *TXT1[5];
+unsigned char *TXT2[3];
 
 
 void main() {
 
+ MOTORS_Init();
  LCD_Init_P();
  SENSOR_Init();
- MOTORS_Init();
-do{
 
 
+ Speed = SPEED_Read();
+ Direction = DIRECTION_Read();
 
-}while(1);
+ if (Direction == 0)
+ {
+ strcpy(TXT1,"LEFT");
+ Dn = 1;
+ }else{
+ strcpy(TXT1,"RIGHT");
+ Dn = 2;
+ }
+
+ if (Speed == 0)
+ {
+ strcpy(TXT2,"MIN");
+ Sd = 80;
+
+ }else if (Speed == 1){
+
+ strcpy(TXT2,"MOY");
+ Sd = 160;
+
+ }else{
+ strcpy(TXT2,"MAX");
+ Sd = 255;
+ }
+ MOTOR_Aspirator(1);
+ MOTOR_Blades(1);
+
+ for(;;){
+ IR1 = SENSOR_R1();
+ IR2 = SENSOR_R2();
+ IR3 = SENSOR_R3();
+ switch (Etat) {
+
+ case 0:
+
+ MOTROS_Start(sd);
+ LCD_Out(1,1,"SPEED :");
+ LCD_Out(1,8,TXT1);
+ LCD_Out(2,1,"DIRCT :");
+ LCD_Out(2,8,TXT2);
+
+ if ( IR1 > 600 ){
+
+ if ((IR2 < 512) && (IR3 < 512)) Etat = 3;
+ else if (IR3 < 512) Etat = 2;
+ else if (IR2 < 512) Etat = 1;
+ else Etat = 4;
+
+ LCD_Cmd(_LCD_CLEAR);
+ }
+
+ break;
+
+ case 1:
+
+ if ( IR1 > 600 ) {
+ MOTORS_Left(sd);
+ LCD_Out(1,1,"Obstacle R");
+ Led = ~ Led;
+ }else{
+ Etat = 0;
+ LCD_Cmd(_LCD_CLEAR);
+ }
+
+ break;
+
+ case 2:
+
+ if ( IR1 > 600 ) {
+ MOTORS_Right(sd);
+ LCD_Out(1,1,"Obstacle L");
+ Led = ~ Led;
+ }else{
+ Etat = 0;
+ LCD_Cmd(_LCD_CLEAR);
+ }
+
+ break;
+
+ case 3:
+
+ if (Dn == 1) Etat = 1;
+ else Etat = 2;
+
+ break;
+
+
+ case 4:
+ LCD_Out(1,1,"Around");
+ MOTORS_Mill_Around();
+ Etat = 0;
+ LCD_Cmd(_LCD_CLEAR);
+
+ break;
+
+
+ }
+
+
+ };
+
+
 
 }

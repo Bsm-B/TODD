@@ -1,6 +1,7 @@
 #ifndef LCD_H_INCLUDED
 #define LCD_H_INCLUDED
 
+ sbit LED at PORTC.B0;
  // LCD Connections
  sbit LCD_EN at RD0_bit;
  sbit LCD_RS at RD1_bit;

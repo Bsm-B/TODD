@@ -1,6 +1,18 @@
 main
 	__CC2DW
 		____DoICP
+	MOTORS_Init
+		PWM1_Init
+		PWM2_Init
+		PWM1_Start
+		PWM2_Start
+		MOTOR_Blades
+		MOTOR_Aspirator
+		MOTORS_Stop
+			PWM1_Set_Duty
+				Mul_16X16_U
+			PWM2_Set_Duty
+				Mul_16X16_U
 	LCD_Init_P
 		Lcd_Init
 			Delay_5500us
@@ -19,22 +31,77 @@ main
 					Delay_1us
 					Delay_5500us
 					Delay_50us
-		CustomChar
+	SENSOR_Init
+		ADC_Init
+	SPEED_Read
+		EEPROM_Read
+	DIRECTION_Read
+		EEPROM_Read
+	strcpy
+	MOTOR_Aspirator
+	MOTOR_Blades
+	SENSOR_R1
+		ADC_Read
+			Delay_22us
+		word2double
+			NRM3232
+				RES032
+				SETFUN32
+				FIXSIGN32
+	SENSOR_R2
+		ADC_Read
+			Delay_22us
+		word2double
+			NRM3232
+				RES032
+				SETFUN32
+				FIXSIGN32
+	SENSOR_R3
+		ADC_Read
+			Delay_22us
+		word2double
+			NRM3232
+				RES032
+				SETFUN32
+				FIXSIGN32
+	MOTROS_Start
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
+	Lcd_Out
+		Lcd_Cmd
+			Delay_1us
+			Delay_5500us
+			Delay_50us
+		Lcd_Chr_CP
 			Lcd_Cmd
 				Delay_1us
 				Delay_5500us
 				Delay_50us
-			____DoICP
-			Lcd_Chr_CP
-				Lcd_Cmd
-					Delay_1us
-					Delay_5500us
-					Delay_50us
-			Lcd_Chr
-				Lcd_Cmd
-					Delay_1us
-					Delay_5500us
-					Delay_50us
-	SENSOR_Init
-	MOTORS_Init
+	Compare_Double
+	Lcd_Cmd
+		Delay_1us
+		Delay_5500us
+		Delay_50us
+	MOTORS_Left
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
+	MOTORS_Right
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
+	MOTORS_Mill_Around
+		MOTORS_Stop
+			PWM1_Set_Duty
+				Mul_16X16_U
+			PWM2_Set_Duty
+				Mul_16X16_U
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
 interrupt

@@ -5,16 +5,15 @@
 
 
 
-unsigned short CONFIG_Read();
-void CONFIG_Write(unsigned short);
-#line 4 "C:/Users/Bsm/Desktop/TODD/src/EEPROM.c"
-unsigned short CONFIG_Read()
-{
- return EEPROM_Read( 0x00 );
+
+unsigned short SPEED_Read();
+unsigned short DIRECTION_Read();
+#line 7 "C:/Users/Bsm/Desktop/TODD/src/EEPROM.c"
+unsigned short SPEED_Read(){
+
+ return EEPROM_Read( 0x0010 );
 }
+unsigned short DIRECTION_Read(){
 
-
-void CONFIG_Write(unsigned short C)
-{
- EEPROM_Write( 0x00 ,C);
+ return EEPROM_Read( 0x0040 );
 }

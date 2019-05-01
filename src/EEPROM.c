@@ -1,13 +1,14 @@
 #include "EEPROM.h"
 
 
-unsigned short CONFIG_Read()
-{
-  return EEPROM_Read(CONFIG);
+
+
+
+unsigned short SPEED_Read(){
+
+         return EEPROM_Read(SPEED);
 }
+unsigned short DIRECTION_Read(){
 
-
-void CONFIG_Write(unsigned short C)
-{
-  EEPROM_Write(CONFIG,C);
+         return EEPROM_Read(DIRECTION);
 }

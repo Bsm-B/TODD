@@ -55,7 +55,7 @@ void main() {
         IR3 =  SENSOR_R3();
         switch (Etat) {
 
-            case 0:     // ETAT 1   // NORMAL
+            case 0:     // ETAT 0  // INIT
                                
              MOTROS_Start(sd);
              LCD_Out(1,1,"SPEED :");
@@ -72,10 +72,26 @@ void main() {
                 
                 LCD_Cmd(_LCD_CLEAR);
               }
+              
+              
+              else if ( IR2 > 900){     // LEFT
+                  
+                   Etat = 5;
+                   LCD_Cmd(_LCD_CLEAR);
+              }
+
+              else if (IR3 > 900){     // RIGHT
+              
+                   Etat = 6;
+                   LCD_Cmd(_LCD_CLEAR);
+              
+              }
+              if (PORTE.RE0)      // CONFIG MODE
+                    Etat = 7;
 
              break;
              
-             case 1:   // ETAT 2   //LEFT
+             case 1:   // ETAT 1   //LEFT
                 
                 if ( IR1 > 600 ) {
                     MOTORS_Left(sd);
@@ -88,7 +104,7 @@ void main() {
 
              break;
              
-             case 2: // ETAT 3   //RIGHT
+             case 2: // ETAT 2  //RIGHT
              
               if ( IR1 > 600 ) {
                  MOTORS_Right(sd);
@@ -101,7 +117,7 @@ void main() {
               
               break;
               
-              case 3:
+              case 3:  // ETAT 3  //SELECT BY USER
               
               if (Dn  == 1) Etat = 1;  //LEFT
               else Etat = 2;          //RIGHT
@@ -109,11 +125,36 @@ void main() {
               break;
               
               
-              case 4:
+              case 4:  // ETAT 4 # RETURN ARROUND
+              
               LCD_Out(1,1,"Around");
               MOTORS_Mill_Around();
               Etat = 0;
               LCD_Cmd(_LCD_CLEAR);
+              
+              break;
+              
+              
+              case 5:    // ETAT 5 #SKIP LEFT
+              
+                    MOTORS_Left(sd);
+                    LCD_Out(1,1,"Skip L");
+                    if (IR2 < 512){
+                     Etat = 0;
+                     LCD_Cmd(_LCD_CLEAR);
+                    }
+
+              break;
+              
+              
+              
+              case 6:   // ETAT 6 #SKIP RIGHT
+                    MOTORS_Right(sd);
+                    LCD_Out(1,1,"Skip R");
+                    if (IR3 < 512){
+                     Etat = 0;
+                     LCD_Cmd(_LCD_CLEAR);
+                    }
               
               break;
              

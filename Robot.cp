@@ -124,6 +124,22 @@ void main() {
  LCD_Cmd(_LCD_CLEAR);
  }
 
+
+ else if ( IR2 > 900){
+
+ Etat = 5;
+ LCD_Cmd(_LCD_CLEAR);
+ }
+
+ else if (IR3 > 900){
+
+ Etat = 6;
+ LCD_Cmd(_LCD_CLEAR);
+
+ }
+ if (PORTE.RE0)
+ Etat = 7;
+
  break;
 
  case 1:
@@ -161,10 +177,35 @@ void main() {
 
 
  case 4:
+
  LCD_Out(1,1,"Around");
  MOTORS_Mill_Around();
  Etat = 0;
  LCD_Cmd(_LCD_CLEAR);
+
+ break;
+
+
+ case 5:
+
+ MOTORS_Left(sd);
+ LCD_Out(1,1,"Skip L");
+ if (IR2 < 512){
+ Etat = 0;
+ LCD_Cmd(_LCD_CLEAR);
+ }
+
+ break;
+
+
+
+ case 6:
+ MOTORS_Right(sd);
+ LCD_Out(1,1,"Skip R");
+ if (IR3 < 512){
+ Etat = 0;
+ LCD_Cmd(_LCD_CLEAR);
+ }
 
  break;
 

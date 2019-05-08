@@ -92,6 +92,7 @@ void main() {
             break;
         
         }
+        
         switch (Etat) {
 
             case 0:     // ETAT 0  // INIT

@@ -1,6 +1,6 @@
 #line 1 "C:/Users/Bsm/Desktop/TODD/src/Sensor.c"
 #line 1 "c:/users/bsm/desktop/todd/src/sensor.h"
-#line 23 "c:/users/bsm/desktop/todd/src/sensor.h"
+#line 22 "c:/users/bsm/desktop/todd/src/sensor.h"
 void SENSOR_Init();
 float SENSOR_R1();
 float SENSOR_R2();

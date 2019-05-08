@@ -712,7 +712,7 @@ L_main46:
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
 ;Robot.c,211 :: 		if (SL){
-	BTFSS      PORTC+0, 4
+	BTFSS      PORTB+0, 2
 	GOTO       L_main47
 ;Robot.c,212 :: 		CSD = 1;
 	MOVLW      1
@@ -734,7 +734,7 @@ L_main48:
 ;Robot.c,214 :: 		}
 L_main47:
 ;Robot.c,216 :: 		if (SR) {
-	BTFSS      PORTC+0, 5
+	BTFSS      PORTB+0, 3
 	GOTO       L_main49
 ;Robot.c,217 :: 		CSD = 2;
 	MOVLW      2
@@ -861,7 +861,7 @@ L_main56:
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
 ;Robot.c,252 :: 		if (SR){
-	BTFSS      PORTC+0, 5
+	BTFSS      PORTB+0, 3
 	GOTO       L_main58
 ;Robot.c,253 :: 		Speed = 2;
 	MOVLW      2
@@ -915,7 +915,7 @@ L_main57:
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
 ;Robot.c,261 :: 		if (SL) {
-	BTFSS      PORTC+0, 4
+	BTFSS      PORTB+0, 2
 	GOTO       L_main62
 ;Robot.c,262 :: 		Speed = 1;
 	MOVLW      1
@@ -937,7 +937,7 @@ L_main63:
 	NOP
 L_main62:
 ;Robot.c,265 :: 		if (SR){
-	BTFSS      PORTC+0, 5
+	BTFSS      PORTB+0, 3
 	GOTO       L_main64
 ;Robot.c,266 :: 		Speed = 3;
 	MOVLW      3
@@ -987,7 +987,7 @@ L_main61:
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
 ;Robot.c,274 :: 		if (SL == 1) {
-	BTFSS      PORTC+0, 4
+	BTFSS      PORTB+0, 2
 	GOTO       L_main67
 ;Robot.c,275 :: 		Speed = 2;
 	MOVLW      2
@@ -1068,7 +1068,7 @@ L_main71:
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
 ;Robot.c,295 :: 		if (SL) {
-	BTFSS      PORTC+0, 4
+	BTFSS      PORTB+0, 2
 	GOTO       L_main72
 ;Robot.c,296 :: 		Direction = 1;
 	MOVLW      1
@@ -1090,7 +1090,7 @@ L_main73:
 	NOP
 L_main72:
 ;Robot.c,298 :: 		if (SR) {
-	BTFSS      PORTC+0, 5
+	BTFSS      PORTB+0, 3
 	GOTO       L_main74
 ;Robot.c,299 :: 		Direction = 2;
 	MOVLW      2

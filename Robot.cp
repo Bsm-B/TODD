@@ -9,7 +9,7 @@
 unsigned short SPEED_Read();
 unsigned short DIRECTION_Read();
 #line 1 "c:/users/bsm/desktop/todd/src/sensor.h"
-#line 23 "c:/users/bsm/desktop/todd/src/sensor.h"
+#line 22 "c:/users/bsm/desktop/todd/src/sensor.h"
 void SENSOR_Init();
 float SENSOR_R1();
 float SENSOR_R2();
@@ -259,12 +259,12 @@ void main() {
  Lcd_Out(1,1,CONFIG);
  Lcd_Out(2,2,OptionC);
 
- if ( PORTC.RC4 ){
+ if ( PORTB.RB2 ){
  CSD = 1;
  Delay_ms(200);
  }
 
- if ( PORTC.RC5 ) {
+ if ( PORTB.RB3 ) {
  CSD = 2;
  Delay_ms(200);
  }
@@ -300,7 +300,7 @@ void main() {
  Lcd_Out(2,1,Tag);
  Lcd_Out(2,6,Vid);
  Lcd_Out(2,11,Vid);
- if ( PORTC.RC5 ){
+ if ( PORTB.RB3 ){
  Speed = 2;
  Delay_ms(300);
  }
@@ -309,11 +309,11 @@ void main() {
  Lcd_Out(2,1,Vid);
  Lcd_Out(2,7,Tag);
  Lcd_Out(2,13,Vid);
- if ( PORTC.RC4 ) {
+ if ( PORTB.RB2 ) {
  Speed = 1;
  Delay_ms(300); }
 
- if ( PORTC.RC5 ){
+ if ( PORTB.RB3 ){
  Speed = 3;
  Delay_ms(300);
  }
@@ -322,7 +322,7 @@ void main() {
  Lcd_Out(2,1,Vid);
  Lcd_Out(2,6,Vid);
  Lcd_Out(2,12,Tag);
- if ( PORTC.RC4  == 1) {
+ if ( PORTB.RB2  == 1) {
  Speed = 2;
  Delay_ms(300); }
  }
@@ -343,10 +343,10 @@ void main() {
  case 9:
 
  Lcd_Out(2,2,OptionD);
- if ( PORTC.RC4 ) {
+ if ( PORTB.RB2 ) {
  Direction = 1;
  Delay_ms(300); }
- if ( PORTC.RC5 ) {
+ if ( PORTB.RB3 ) {
  Direction = 2;
  Delay_ms(300);
  }

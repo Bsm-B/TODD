@@ -15,9 +15,8 @@
 // CONFIG BUTTONS
 #define OK PORTB.RB1
 #define CG PORTC.RC3
-#define SL PORTC.RC4
-#define SR PORTC.RC5
-
+#define SL PORTB.RB2
+#define SR PORTB.RB3
 
 
 void  SENSOR_Init();

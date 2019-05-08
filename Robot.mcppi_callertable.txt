@@ -6,8 +6,6 @@ main
 		PWM2_Init
 		PWM1_Start
 		PWM2_Start
-		MOTOR_Blades
-		MOTOR_Aspirator
 		MOTORS_Stop
 			PWM1_Set_Duty
 				Mul_16X16_U
@@ -28,8 +26,6 @@ main
 	DIRECTION_Read
 		EEPROM_Read
 	strcpy
-	MOTOR_Aspirator
-	MOTOR_Blades
 	SENSOR_R1
 		ADC_Read
 			Delay_22us
@@ -54,6 +50,16 @@ main
 				RES032
 				SETFUN32
 				FIXSIGN32
+	MOTORS_Right
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
+	MOTORS_Left
+		PWM1_Set_Duty
+			Mul_16X16_U
+		PWM2_Set_Duty
+			Mul_16X16_U
 	MOTROS_Start
 		PWM1_Set_Duty
 			Mul_16X16_U
@@ -74,12 +80,7 @@ main
 		Delay_1us
 		Delay_5500us
 		Delay_50us
-	MOTORS_Left
-		PWM1_Set_Duty
-			Mul_16X16_U
-		PWM2_Set_Duty
-			Mul_16X16_U
-	MOTORS_Right
+	MOTORS_Stop
 		PWM1_Set_Duty
 			Mul_16X16_U
 		PWM2_Set_Duty
@@ -94,4 +95,5 @@ main
 			Mul_16X16_U
 		PWM2_Set_Duty
 			Mul_16X16_U
+	EEPROM_Write
 interrupt

@@ -28,14 +28,16 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-File0=.\src\EEPROM.c
-File1=.\src\EEPROM.h
-File2=.\src\Sensor.h
-File3=Robot.c
-File4=.\src\Sensor.c
-File5=.\src\Motors.c
-File6=.\src\LCD.c
-Count=7
+File0=Robot.c
+File1=.\src\Sensor.c
+File2=.\src\Motors.h
+File3=.\src\Motors.c
+File4=.\src\Sensor.h
+File5=.\src\EEPROM.c
+File6=..\..\..\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\P16F877A.c
+File7=.\src\EEPROM.h
+File8=..\..\..\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\__Lib_MemManager.c
+Count=9
 [EEPROM]
 File0=Robot.ihex
 Count=1
@@ -110,4 +112,7 @@ Count=43
 9=src
 Count=5
 [LIB_EXPANDED_NODES]
-Count=1
+0=mikroE Libraries
+1=System Libraries
+2=ADC
+Count=3

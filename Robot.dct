@@ -325,11 +325,15 @@ cmif
 cmif_bit
 comfrem
 compare_double
+confid
+config
+confis
 cos
 cose3
 cosh
 cren
 cren_bit
+csd
 csrc
 csrc_bit
 cvr0
@@ -384,7 +388,7 @@ div_32x32_s
 div_32x32_u
 div_8x8_s
 div_8x8_u
-dn
+done
 double2byte
 double2int
 double2longint
@@ -441,6 +445,7 @@ fabs
 ferr
 ferr_bit
 fixsign32
+flag
 flash_read
 flash_write
 floattostr
@@ -530,7 +535,6 @@ ibov_trise_bit
 ics_auto
 ics_off
 indf
-int_num
 int2double
 intcon
 inte
@@ -595,8 +599,6 @@ lcd_rs_direction
 lcd_rs_direction
 ldexp
 ldiv
-led
-led
 log
 log10
 longint2double
@@ -634,8 +636,6 @@ mm_nrfreeblocksused
 mm_possiblyfragmented
 mm_totalfreememsize
 modf
-motor_aspirator
-motor_blades
 motors_init
 motors_left
 motors_mill_around
@@ -686,6 +686,9 @@ obf_trise_bit
 oerr
 oerr_bit
 option_reg
+optionc
+optiond
+options
 ow_read
 ow_reset
 ow_write
@@ -1262,6 +1265,7 @@ t6963c_write_text_adv
 t6963c_write_text_return_pos
 t6963c_writecommand
 t6963c_writedata
+tag
 tan
 tanh
 time_datetoepoch
@@ -1410,6 +1414,7 @@ uart1_write_text
 uldiv
 vdelay_advanced_ms
 vdelay_ms
+vid
 vref_mask
 w
 wcol

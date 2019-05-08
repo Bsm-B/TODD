@@ -8,12 +8,12 @@
 
 unsigned short SPEED_Read();
 unsigned short DIRECTION_Read();
-#line 7 "C:/Users/Bsm/Desktop/TODD/src/EEPROM.c"
+#line 3 "C:/Users/Bsm/Desktop/TODD/src/EEPROM.c"
 unsigned short SPEED_Read(){
 
  return EEPROM_Read( 0x0010 );
 }
 unsigned short DIRECTION_Read(){
 
- return EEPROM_Read( 0x0040 );
+ return EEPROM_Read( 0x0020 );
 }

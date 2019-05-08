@@ -12,8 +12,6 @@ _LCD_Init_P:
 	MOVLW      12
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;LCD.c,11 :: 		LED = 1; //
-	BSF        PORTC+0, 0
 ;LCD.c,12 :: 		}
 L_end_LCD_Init_P:
 	RETURN

@@ -1,9 +1,5 @@
 #include "EEPROM.h"
 
-
-
-
-
 unsigned short SPEED_Read(){
 
          return EEPROM_Read(SPEED);

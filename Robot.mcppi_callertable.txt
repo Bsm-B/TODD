@@ -21,10 +21,14 @@ main
 			Delay_50us
 	SENSOR_Init
 		ADC_Init
+	UART1_Init
 	SPEED_Read
 		EEPROM_Read
 	DIRECTION_Read
 		EEPROM_Read
+	UART1_Write_Text
+		UART1_Write
+	UART1_Write
 	strcpy
 	SENSOR_R1
 		ADC_Read
@@ -50,6 +54,8 @@ main
 				RES032
 				SETFUN32
 				FIXSIGN32
+	UART1_Read
+	EEPROM_Write
 	MOTORS_Right
 		PWM1_Set_Duty
 			Mul_16X16_U
@@ -95,5 +101,4 @@ main
 			Mul_16X16_U
 		PWM2_Set_Duty
 			Mul_16X16_U
-	EEPROM_Write
 interrupt

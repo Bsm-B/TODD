@@ -1404,6 +1404,7 @@ txt1
 txt2
 ua
 ua_bit
+uart_rd
 uart1_data_ready
 uart1_init
 uart1_read

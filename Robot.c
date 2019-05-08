@@ -23,6 +23,7 @@ char OptionD[] = "LEFT     RIGHT";
 char Tag[]= ">";
 char Vid[]= " ";
 char Done[]= "OK";
+ char uart_rd;
 
 
 
@@ -32,11 +33,18 @@ void main() {
  MOTORS_Init();
  LCD_Init_P();
  SENSOR_Init();
-
+   
+   UART1_Init(9600);
 ///Load Data
   Speed = SPEED_Read();
   Direction = DIRECTION_Read();
   
+  
+  UART1_Write_Text("Start");
+  UART1_Write(10);
+  UART1_Write(13);
+
+
        //  CONFIG
          if (Direction == 1)
        {
@@ -65,7 +73,28 @@ void main() {
         IR1 =  SENSOR_R1();
         IR2 =  SENSOR_R2();
         IR3 =  SENSOR_R3();
-        
+
+      uart_rd = UART1_Read();
+      switch(uart_rd)
+      {
+      case '1':
+        EEPROM_WRITE(DIRECTION,1);
+      break;
+       case '2':
+        EEPROM_WRITE(DIRECTION,2);
+      break;
+       case '3':
+        EEPROM_WRITE(SPEED,1);
+      break;
+      case '4':
+        EEPROM_WRITE(SPEED,2);
+      break;
+      case '5':
+        EEPROM_WRITE(SPEED,3);
+      break;
+      
+      }
+      
         switch(Flag)
         {
             case 1:
@@ -327,6 +356,7 @@ void main() {
              
        
         }
+
 
 
     };
